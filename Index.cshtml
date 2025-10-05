@@ -1,0 +1,30 @@
+﻿@model CalculatorMVC.Models.CalculatorModel
+@{
+    ViewBag.Title = "Calculator";
+}
+<h2>CALCULATOR</h2>
+@using (Html.BeginForm())
+            {
+              <p>
+                  First Number : @Html.TextBoxFor(m => m.Number1)
+             </p>
+             <p>
+                 Second Number : @Html.TextBoxFor(m => m.Number2)
+             </p>
+             <p>
+                 @Html.DropDownListFor(m => m.operation,
+                new SelectList(new [] { 
+                    new {Text = "Add" , Value = "Add"},
+                    new {Text = "Subtract", Value = "Subtract"},
+                    new {Text = "Multiply", Value = "Multiply"},
+                    new {Text = "Division", Value = "Division"}
+                 }, "Value", "Text"))
+
+             </p>
+             <input type="submit" value="Calculate"/>
+            }
+
+@if(Model!= null)
+            {
+                <h3>RESULT : @Model.result</h3>
+            }
